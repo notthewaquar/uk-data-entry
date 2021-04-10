@@ -3,7 +3,8 @@ import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class DataEntryService {
-  baseUrl: string = "http://srvtechservices.com/api/User";
+  // baseUrl: string = "http://srvtechservices.com/api/User";
+  baseUrl: string = "https://srvtechnology.com/api/User";
   token: string;
   
   dataEntryFormDATA: any = {};

@@ -17,7 +17,7 @@ interface AuthResponseData {
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-  baseUrl: string = "http://srvtechservices.com/api/User";
+  baseUrl: string = "https://srvtechnology.com/api/User";
   user = new Subject<User>();
   userToken: string = null;
 
