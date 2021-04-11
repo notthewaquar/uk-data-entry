@@ -39,6 +39,7 @@
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <button
+        *ngIf="isAuthenticated"
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
@@ -58,12 +59,14 @@
           <i class="fas fa-folder-plus"></i>
         </a>
         <a
+          *ngIf="isAuthenticated"
           mat-raised-button
           routerLinkActive="active" 
           routerLink="/dashboard">
           <i class="fas fa-cubes"></i>
         </a>
-        <a 
+        <a
+          *ngIf="isAuthenticated" 
           mat-raised-button
           (click)="onLogout()">
           <i class="fas fa-power-off"></i>

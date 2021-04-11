@@ -66,3 +66,54 @@ hr {
 .text-center {
   text-align: center !important;
 }
+.d-flex {
+  display: flex;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+.preview-modal mat-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  margin: auto !important;
+  height: 90vh;
+  overflow: auto;
+}
+.preview-modal mat-card {
+}
+.preview-modal mat-card > div {
+  margin-bottom: 10px;
+}
+.preview-modal mat-card > div b,
+.preview-modal mat-card > div span {
+  font-size: 16px;
+}
+.preview-modal b {
+  margin-right: 15px;
+  font-weight: 500;
+}
+.preview-modal span {
+}
+
+.preview-modal .close-div {
+  position: relative;
+  height: 0 !important;
+  margin: 0 !important;
+}
+.preview-modal .close-div i,
+.preview-modal .close-div svg {
+  position: fixed;
+  top: 0;
+  left: auto;
+  right: 0;
+  background: #f44336;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 10px;
+  cursor: pointer;
+}

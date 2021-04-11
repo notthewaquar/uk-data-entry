@@ -4,7 +4,7 @@ mat-card {
 /* mat-form-field {
   width: 100%;
 } */
-.preview-modal mat-card {
+/* .preview-modal mat-card {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -35,8 +35,8 @@ mat-card {
   height: 0 !important;
   margin: 0 !important;
 }
-.preview-modal .close-div i {
-  /* .preview-modal .close-div svg { */
+.preview-modal .close-div i,
+.preview-modal .close-div svg {
   position: fixed;
   top: 0;
   left: auto;
@@ -48,4 +48,4 @@ mat-card {
   border-radius: 5px;
   margin: 10px;
   cursor: pointer;
-}
+} */

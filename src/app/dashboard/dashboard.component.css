@@ -41,3 +41,11 @@ th p {
 .fz10 {
   font-size: 10px;
 }
+.action-btn-div{}
+.action-btn-div button{}
+.action-btn-div span{
+  display: flex;
+  width: 15px;
+  justify-content: center;
+  align-items: center;
+}

@@ -21,6 +21,7 @@ export class AuthService {
   
   user = new Subject<User>();
   userToken: string = null;
+  isAuthenticated: boolean = false;
 
   constructor(
     private router: Router,
@@ -50,7 +51,7 @@ export class AuthService {
           expirationDate
         )
         localStorage.setItem("userData", JSON.stringify(user));
-
+        this.isAuthenticated = true;
         this.user.next(user);
       })
     );

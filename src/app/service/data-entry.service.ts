@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable()
 export class DataEntryService {
@@ -13,7 +14,8 @@ export class DataEntryService {
   // dummyDate2,
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private _snackBar: MatSnackBar
   ) {}
   // CREATE FORM
   getData() {
@@ -41,9 +43,45 @@ export class DataEntryService {
     )
   }
   addNewAllFormData(allDataObj: any) {
+    console.log(allDataObj);
     return this.http.post(
       this.baseUrl + "/create.php",
-      allDataObj
+      `
+      {
+        "businessName": ${allDataObj.businessName},
+        "businessCategory": ${allDataObj.businessCategory},
+        "servicesOffered": ${allDataObj.servicesOffered},
+        "desOfService": ${allDataObj.desOfService},
+        "onlineService": ${allDataObj.onlineService},
+        "addressLine1": ${allDataObj.addressLine1},
+        "addressLine2": ${allDataObj.addressLine2},
+        "addressLine3": ${allDataObj.addressLine3},
+        "country": ${allDataObj.country},
+        "postcode": ${allDataObj.postcode},
+        "copmanyName": ${allDataObj.copmanyName},
+        "companyAddress": ${allDataObj.companyAddress},
+        "companyNumber": ${allDataObj.companyNumber},
+        "nameOfContact": ${allDataObj.nameOfContact},
+        "emailOfContactPerson": ${allDataObj.emailOfContactPerson},
+        "telephoneNumber": ${allDataObj.telephoneNumber},
+        "cellphoneNumber": ${allDataObj.cellphoneNumber},
+        "email": ${allDataObj.email},
+        "website": ${allDataObj.website},
+        "fbAccount": ${allDataObj.fbAccount},
+        "fbFollower": ${allDataObj.fbFollower},
+        "instaAccount": ${allDataObj.instaAccount},
+        "instaFollower": ${allDataObj.instaFollower},
+        "twitterAccount": ${allDataObj.twitterAccount},
+        "twitterFollower": ${allDataObj.twitterFollower},
+        "youtubeChannel": ${allDataObj.youtubeChannel},
+        "youtubeSubscriber": ${allDataObj.youtubeSubscriber},
+        "pinterestAccount": ${allDataObj.pinterestAccount},
+        "pinterestFollower": ${allDataObj.pinterestFollower},
+        "primaryCatagory": ${allDataObj.primaryCatagory},
+        "createdDate": ${allDataObj.createdDate},
+        "updatedDate": ${allDataObj.updatedDate},
+      }
+      `
     );
   }
   addAllFormDataApi(allDataObj) {
@@ -66,6 +104,28 @@ export class DataEntryService {
         "id": ${id}
       }`
     )
+  }
+  getEachFDataPreviewModel(id) {
+    // data = allDataEntryFormDATA
+    let data;
+    for (let i = 0; i < this.allDataEntryFormDATA.length; i++) {
+      console.log(this.allDataEntryFormDATA[i].id)
+      console.log(id)
+      if (
+        this.allDataEntryFormDATA[i].id === id + ''
+      ) {
+        data = this.allDataEntryFormDATA[i];
+        return data;
+      }
+    }
+    console.log(data)
+    return data;
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 }
 // const dummyDate = {

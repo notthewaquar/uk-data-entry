@@ -20,6 +20,9 @@ import { AuthService } from '../login/auth.service';
 })
 export class DashboardComponent implements OnInit, AfterViewInit  {
   isLoading: boolean = false;
+  previewMode: boolean = false;
+  previewId: number;
+  previewData: any = {};
   displayedColumns: string[] = [
     "businessName",
     "primaryCatagory",
@@ -139,67 +142,7 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
     // this.dataSource.filterPredicate = this.createFilter();
     // this.dataSource.paginator = this.paginator;
     // this.dataSource.sort = this.sort;
-    this.isLoading= true;
-    const jwtToken = this.authService.userToken;
-    this.dataEntryService.fetchAllData(jwtToken).subscribe(
-      resData => {
-      console.log(resData);
-      let eachData = {};
-      let allDataObj = [];
-
-      for (let i = 0; i < resData.records.length; i++) {
-        const a = resData.records[i];
-        eachData = {};
-        eachData = {
-          businessName: a.bussiness_name,
-          primaryCatagory: a.primary_category,
-          businessCategory: a.business_category,
-          servicesOffered: a.services_offered,
-          desOfService: a.desp_of_service,
-          onlineService: a.online_service,
-          addressLine1: a.address1,
-          addressLine2: a.address2,
-          addressLine3: a.address3,
-          country: a.country,
-          postcode: a.postcode,
-          copmanyName: a.coy_name,
-          companyAddress: a.coy_address,
-          companyNumber: a.coy_num,
-          nameOfContact: a.name_of_contact,
-          emailOfContactPerson: a.email_of_contact_person,
-          telephoneNumber: a.tele_num,
-          cellphoneNumber: a.cell_num,
-          email: a.email,
-          website: a.website,
-          fbAccount: a.fb_account,
-          fbFollower: a.fb_follower,
-          instaAccount: a.insta_account,
-          instaFollower: a.insta_follower,
-          twitterAccount: a.twitter_account,
-          twitterFollower: a.twitter_follower,
-          youtubeChannel: a.youtube_account,
-          youtubeSubscriber: a.youtube_follower,
-          pinterestAccount: a.pinterest_account,
-          pinterestFollower: a.pinterest_follower,
-          createdDate: a.created_at,
-          updatedDate: a.updated_at,
-          id: a.id,
-        };
-        allDataObj.push(eachData);
-      }
-      this.dataEntryService.addAllFormDataApi(allDataObj);
-      this.dataSource = new MatTableDataSource();
-      this.dataSource.data = this.dataEntryService.getAllData();
-      console.log(this.dataSource);
-      this.dataSource.filterPredicate = this.createFilter();
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-      this.isLoading = false;
-    },
-    error => {
-      console.log(error);
-      this.isLoading = false;
-    })
+    this.onFetchAllPost();
 
     this.businessNameFilter.valueChanges.subscribe(businessName => {
       this.filterValues.businessName = businessName;
@@ -335,6 +278,69 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
+  onFetchAllPost() {
+    this.isLoading= true;
+    const jwtToken = this.authService.userToken;
+    this.dataEntryService.fetchAllData(jwtToken).subscribe(
+      resData => {
+      console.log(resData);
+      let eachData = {};
+      let allDataObj = [];
+
+      for (let i = 0; i < resData.records.length; i++) {
+        const a = resData.records[i];
+        eachData = {};
+        eachData = {
+          businessName: a.bussiness_name,
+          primaryCatagory: a.primary_category,
+          businessCategory: a.business_category,
+          servicesOffered: a.services_offered,
+          desOfService: a.desp_of_service,
+          onlineService: a.online_service,
+          addressLine1: a.address1,
+          addressLine2: a.address2,
+          addressLine3: a.address3,
+          country: a.country,
+          postcode: a.postcode,
+          copmanyName: a.coy_name,
+          companyAddress: a.coy_address,
+          companyNumber: a.coy_num,
+          nameOfContact: a.name_of_contact,
+          emailOfContactPerson: a.email_of_contact_person,
+          telephoneNumber: a.tele_num,
+          cellphoneNumber: a.cell_num,
+          email: a.email,
+          website: a.website,
+          fbAccount: a.fb_account,
+          fbFollower: a.fb_follower,
+          instaAccount: a.insta_account,
+          instaFollower: a.insta_follower,
+          twitterAccount: a.twitter_account,
+          twitterFollower: a.twitter_follower,
+          youtubeChannel: a.youtube_account,
+          youtubeSubscriber: a.youtube_follower,
+          pinterestAccount: a.pinterest_account,
+          pinterestFollower: a.pinterest_follower,
+          createdDate: a.created_at,
+          updatedDate: a.updated_at,
+          id: a.id,
+        };
+        allDataObj.push(eachData);
+      }
+      this.dataEntryService.addAllFormDataApi(allDataObj);
+      this.dataSource = new MatTableDataSource();
+      this.dataSource.data = this.dataEntryService.getAllData();
+      console.log(this.dataSource);
+      this.dataSource.filterPredicate = this.createFilter();
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.isLoading = false;
+    },
+    error => {
+      console.log(error);
+      this.isLoading = false;
+    })
+  }
 
   onDeleteOne(delId: any) {
     // console.log(this.dataSource);
@@ -344,10 +350,20 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
       resData => {
         this.isLoading = false;
         console.log(resData);
+        this.onFetchAllPost();
+        this.dataEntryService.openSnackBar(
+          "Data was successfully deleted",
+          "okay"
+        )
       },
       error => {
         this.isLoading = false;
         console.log(error);
+        this.onFetchAllPost();
+        this.dataEntryService.openSnackBar(
+          "Data was successfully deleted",
+          "okay"
+        )
       }
     );
   }
@@ -403,5 +419,17 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
         // && data.pet.toLowerCase().indexOf(searchTerms.pet) !== -1;
     }
     return filterFunction;
+  }
+  viewData(id) {
+    this.previewMode = true;
+    this.previewId = +id;
+    this.previewData = this.dataEntryService.getEachFDataPreviewModel(this.previewId);
+    console.log(this.previewId)
+    console.log(this.previewData)
+  }
+  closePreviewModel() {
+    this.previewData = {};
+    this.previewMode = false;
+    this.previewId = null;
   }
 }

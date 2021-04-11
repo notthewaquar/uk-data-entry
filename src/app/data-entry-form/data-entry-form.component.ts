@@ -201,7 +201,7 @@ export class DataEntryFormComponent implements OnInit {
   }
   ConfirmData() {
     let allDataObj = this.dataEntryForm.value;
-    allDataObj.jwt = this.authService.userToken;
+    // allDataObj.jwt = this.authService.userToken;
     // if ( 
     //   allDataObj.businessCategory.includes(0)
     // ) {
