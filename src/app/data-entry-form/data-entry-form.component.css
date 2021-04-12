@@ -1,9 +1,9 @@
-mat-card {
+mat-card.data-entry-form {
   width: 75vw;
   margin: 20px auto;
 }
 @media only screen and (max-width: 770px) {
-  mat-card {
+  mat-card.data-entry-form {
     width: auto;
     margin: 10px;
   }
