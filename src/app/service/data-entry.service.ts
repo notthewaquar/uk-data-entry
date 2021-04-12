@@ -47,42 +47,6 @@ export class DataEntryService {
     return this.http.post(
       this.baseUrl + "/create.php",
       allDataObj
-      // `
-      // {
-      //   "businessName": ${allDataObj.businessName},
-      //   "businessCategory": ${allDataObj.businessCategory},
-      //   "servicesOffered": ${allDataObj.servicesOffered},
-      //   "desOfService": ${allDataObj.desOfService},
-      //   "onlineService": ${allDataObj.onlineService},
-      //   "addressLine1": ${allDataObj.addressLine1},
-      //   "addressLine2": ${allDataObj.addressLine2},
-      //   "addressLine3": ${allDataObj.addressLine3},
-      //   "country": ${allDataObj.country},
-      //   "postcode": ${allDataObj.postcode},
-      //   "copmanyName": ${allDataObj.copmanyName},
-      //   "companyAddress": ${allDataObj.companyAddress},
-      //   "companyNumber": ${allDataObj.companyNumber},
-      //   "nameOfContact": ${allDataObj.nameOfContact},
-      //   "emailOfContactPerson": ${allDataObj.emailOfContactPerson},
-      //   "telephoneNumber": ${allDataObj.telephoneNumber},
-      //   "cellphoneNumber": ${allDataObj.cellphoneNumber},
-      //   "email": ${allDataObj.email},
-      //   "website": ${allDataObj.website},
-      //   "fbAccount": ${allDataObj.fbAccount},
-      //   "fbFollower": ${allDataObj.fbFollower},
-      //   "instaAccount": ${allDataObj.instaAccount},
-      //   "instaFollower": ${allDataObj.instaFollower},
-      //   "twitterAccount": ${allDataObj.twitterAccount},
-      //   "twitterFollower": ${allDataObj.twitterFollower},
-      //   "youtubeChannel": ${allDataObj.youtubeChannel},
-      //   "youtubeSubscriber": ${allDataObj.youtubeSubscriber},
-      //   "pinterestAccount": ${allDataObj.pinterestAccount},
-      //   "pinterestFollower": ${allDataObj.pinterestFollower},
-      //   "primaryCatagory": ${allDataObj.primaryCatagory},
-      //   "createdDate": ${allDataObj.createdDate},
-      //   "updatedDate": ${allDataObj.updatedDate},
-      // }
-      // `
     );
   }
   addAllFormDataApi(allDataObj) {
@@ -123,79 +87,17 @@ export class DataEntryService {
     return data;
   }
 
+  updateFormData(allDataObj) {
+    console.log(allDataObj);
+    return this.http.post(
+      this.baseUrl + "/update.php",
+      allDataObj
+    );
+  }
+
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 2000,
     });
   }
 }
-// const dummyDate = {
-//   "businessName": "dfd333",
-//   "businessCategory": "dfd444",
-//   "servicesOffered": "dfd",
-//   "desOfService": "dfd",
-//   "onlineService": "dfd",
-//   "addressLine1": "dfd",
-//   "addressLine2": "dfd",
-//   "addressLine3": "dfd",
-//   "country": "dfd",
-//   "postcode": "dfd",
-//   "copmanyName": "dfd",
-//   "companyAddress": "dfd",
-//   "companyNumber": "dfd",
-//   "nameOfContact": "dfd",
-//   "emailOfContactPerson": "dfd",
-//   "telephoneNumber": "dfd",
-//   "cellphoneNumber": "dfd",
-//   "email": "dfd@dfsdf.dsf",
-//   "website": "dfd",
-//   "fbAccount": "dfd",
-//   "fbFollower": "dfd",
-//   "instaAccount": "dfd",
-//   "instaFollower": "dfd",
-//   "twitterAccount": "dfd",
-//   "twitterFollower": "dfd",
-//   "youtubeChannel": "dfd",
-//   "youtubeSubscriber": "dfd",
-//   "pinterestAccount": "dfd",
-//   "pinterestFollower": "dfd",
-//   "primaryCatagory": "dfd",
-//   "createdDate": "20-10-2020",
-//   "updatedDate": "14-01-2021",
-//   "id": "14-01-2021",
-// }
-// const dummyDate2 = {
-//   "businessName": "dfd111",
-//   "businessCategory": "dfd222",
-//   "servicesOffered": "dfd",
-//   "desOfService": "dfd",
-//   "onlineService": "dfd",
-//   "addressLine1": "dfd",
-//   "addressLine2": "dfd",
-//   "addressLine3": "dfd",
-//   "country": "dfd",
-//   "postcode": "dfd",
-//   "copmanyName": "dfd",
-//   "companyAddress": "dfd",
-//   "companyNumber": "dfd",
-//   "nameOfContact": "dfd",
-//   "emailOfContactPerson": "dfd",
-//   "telephoneNumber": "dfd",
-//   "cellphoneNumber": "dfd",
-//   "email": "dfd@dfsdf.dsf",
-//   "website": "dfd",
-//   "fbAccount": "dfd",
-//   "fbFollower": "dfd",
-//   "instaAccount": "dfd",
-//   "instaFollower": "dfd",
-//   "twitterAccount": "dfd",
-//   "twitterFollower": "dfd",
-//   "youtubeChannel": "dfd",
-//   "youtubeSubscriber": "dfd",
-//   "pinterestAccount": "dfd",
-//   "pinterestFollower": "dfd",
-//   "primaryCatagory": "dfd",
-//   "createdDate": "20-10-2020",
-//   "updatedDate": "14-01-2021",
-//   "id": "14-01-2021",
-// }

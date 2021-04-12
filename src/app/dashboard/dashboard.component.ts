@@ -284,6 +284,20 @@ export class DashboardComponent implements OnInit, AfterViewInit  {
     this.dataEntryService.fetchAllData(jwtToken).subscribe(
       resData => {
       console.log(resData);
+      if (
+        resData.message &&
+        resData.status === 0
+      ) {
+        console.log(111);
+        setTimeout(() => {
+          try {
+            this.onFetchAllPost();
+          } catch(error) {
+            console.log(error);
+          }
+          return;
+        }, 2000)
+      }
       let eachData = {};
       let allDataObj = [];
 
