@@ -34,5 +34,10 @@ font-size: 22px;
   width: 100%;
   width: -webkit-fill-available;
 }
-/* .form-icon-div mat-form-field>div{}
-.form-icon-div .mat-form-field-wrapper{} */
+.btwn-btn{
+  display: inline-block;
+  width: 10px;
+}
+.btn-div-11 svg{
+font-size: 16px;
+}
