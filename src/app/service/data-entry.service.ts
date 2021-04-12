@@ -95,6 +95,12 @@ export class DataEntryService {
     );
   }
 
+  getAddress(postcode: string) {
+    const apiKey = "AIzaSyBzwEYEpxeyxKcHDhLODjdjBov2avJyRTM"
+    return this.http.get(
+      `https://maps.googleapis.com/maps/api/geocode/json?address="${postcode}&key=${apiKey}`
+    )
+  }
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 2000,

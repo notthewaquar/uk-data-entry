@@ -17,6 +17,7 @@ export class DataEntryFormComponent implements OnInit {
   isLoading: boolean = false;
   editedIndex: number;
   editMode: boolean = false;
+  isPcLoader: boolean = false;
   @ViewChild('dataEntryRef') dataEntryRef: any;
   @ViewChild('allSelected') private allSelected: MatOption;
   previewMode = false;
@@ -210,6 +211,50 @@ export class DataEntryFormComponent implements OnInit {
       'primaryCatagory': 'Animals and Nature'
     })
   }
+
+  onGetAddress() {
+    this.isPcLoader = true;
+    const postcode = this.dataEntryForm.value.postcode;
+    this.dataEntryService.getAddress(postcode)
+      .subscribe((resData: any) => {
+        console.log(resData);
+        let country: string;
+        let address: string;
+        if ( 
+          resData.results &&
+          resData.results[0]
+        ) {
+          if (
+            resData.results[0].address_components
+          ) { 
+            for (let i = 0; i < resData.results[0].address_components.length; i++) {
+              if (
+                resData.results[0].address_components[i].types.includes("country")
+              ) {
+                console.log(resData.results[0].address_components[i]);
+                country = resData.results[0].address_components[i].long_name;
+              }
+            }
+          }
+          if (
+            resData.results[0].formatted_address
+          ) { 
+            address = resData.results[0].formatted_address;
+          }
+        }
+        console.log(country);
+        console.log(address);
+        this.dataEntryForm.patchValue({
+          "country": country,
+          "addressLine3": address
+        });
+        this.isPcLoader = false;
+      }, error => {
+        this.isPcLoader = false;
+        console.log(error);
+      });
+  }
+
   ConfirmData() {
     this.isLoading = true;
     let allDataObj = this.dataEntryForm.value;

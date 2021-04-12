@@ -117,3 +117,9 @@ hr {
   margin: 10px;
   cursor: pointer;
 }
+.form-icon-div mat-form-field>div{
+  margin-bottom: -1.34375em;
+}
+.form-icon-div .mat-form-field-flex {
+  background-color: rgb(255 255 255);
+}

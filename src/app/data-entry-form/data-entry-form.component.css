@@ -1,51 +1,38 @@
 mat-card {
-  margin: 10px;
+  width: 75vw;
+  margin: 20px auto;
 }
-/* mat-form-field {
-  width: 100%;
-} */
-/* .preview-modal mat-card {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90vw;
-  margin: auto !important;
-  height: 90vh;
-  overflow: auto;
-}
-.preview-modal mat-card {
-}
-.preview-modal mat-card > div {
-  margin-bottom: 10px;
-}
-.preview-modal mat-card > div b,
-.preview-modal mat-card > div span {
-  font-size: 16px;
-}
-.preview-modal b {
-  margin-right: 15px;
-  font-weight: 500;
-}
-.preview-modal span {
+@media only screen and (max-width: 770px) {
+  mat-card {
+    width: auto;
+    margin: 10px;
+  }
 }
 
-.preview-modal .close-div {
-  position: relative;
-  height: 0 !important;
-  margin: 0 !important;
-}
-.preview-modal .close-div i,
-.preview-modal .close-div svg {
-  position: fixed;
+.input-spinner {
+  position: absolute;
   top: 0;
   left: auto;
   right: 0;
-  background: #f44336;
-  color: #fff;
-  font-size: 12px;
-  padding: 5px;
-  border-radius: 5px;
-  margin: 10px;
-  cursor: pointer;
-} */
+}
+.form-icon-div{
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  box-shadow: 0 0 10px -5px #111;
+}
+.form-icon-div button{
+  height: 100%;
+  padding: 0;
+  /* background: #6a5acd; */
+  border-radius: 4px 0 0 4px;
+}
+.form-icon-div button svg{
+font-size: 22px;
+}
+.form-icon-div mat-form-field{
+  width: 100%;
+  width: -webkit-fill-available;
+}
+/* .form-icon-div mat-form-field>div{}
+.form-icon-div .mat-form-field-wrapper{} */
